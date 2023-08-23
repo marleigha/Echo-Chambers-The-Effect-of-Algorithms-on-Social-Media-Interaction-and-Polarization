@@ -1,0 +1,143 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{titling}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+
+
+\setlength{\droptitle}{-10em}   % This is your set screw
+
+\author{The Echo-Plasms (Becky, Elisha, Marleigh)}
+\title{Echo Chambers: The Effect of Algorithms on Social Media Interaction and Polarization}
+
+\begin{document}
+  \maketitle
+
+\section{Introduction}
+ % This is the first reference \cite{cite_key1}.
+      
+\indent    
+
+The advent of the cyber age has brought about a myriad of unprecedented social issues through the creation of digital spaces. Online life and interaction are now structured through these digital spaces, namely social media platforms such as Facebook, TikTok, Twitter, and Reddit. While social media algorithms were initially celebrated as breakthroughs in online connectivity, since the mid-2010s they have also become associated with dangerous radicalization [1]. In particular, historic phenomena like the 2016 Presidential Election or the COVID-19 pandemic have been characterized by the spread of "fake news" and political polarization, which has attracted intense scrutiny for social media algorithms [2]. Critics argue that social media has fostered dangerous "echo chambers": isolated online spaces where individuals' existing beliefs are incessantly reinforced and regurgitated. Within these echo chambers, opposing viewpoints are rare, which intensifies and often radicalizes preexisting perspectives. Popular news [2], [3] often attributes the proliferation of these echo chambers entirely to "malicious" social media algorithms, labeling them as "vicious...computational methods for distilling stereotypes through data" [2]. However, the extent to which online algorithms exacerbate preexisting offline echo chambers remains unclear. Moreover, how can we measure the impact of these "bad" algorithms on the formation of echo chambers [1], and how can we mitigate their harmful effects? In this paper, we will explore how echo chambers are formed, examine the effect of algorithms on different types of echo chambers, introduce a new algorithm for assessing these effects, and outline steps we can take to reduce harm and polarization in the social media realm. 
+
+
+  \section{Defining Echo Chambers }
+
+\indent 
+
+The "echo chamber effect" refers to social media algorithms' tendency to "connect...like-minded individuals" in a way that "restricts the size of the...argument pool" [4]. As such, these algorithms expose users exclusively to "information and opinions that reinforce...existing beliefs" while completely isolating them from "potentially dissenting views" [4]. Critics of online echo chambers argue that, as people use social media as a source of information as well as interaction, this effect leads to intense homogeneity and segregation of opinion. \textit{The Guardian} [3], for example, argues that these algorithms are the primary proliferator of online radicalization: in their article on the dissemination of misogyny, they describe algorithms like TikTok's "For You Page" as "so aggressive that you only need to pause...before it...recommend[s] similar content to you again and again” [3]. But to what extent are algorithms responsible for escalating echo chambers \textit{beyond} human behavior?
+
+TikTok, like most other mainstream social media platforms, uses a "people recommender algorithm," which analyzes users' social network structure and online behavioral information to personalize content recommendations [5]. (Other examples are the "People You Might Know" feature on Instagram or the Suggested Content feature on Facebook Feeds.) According to Cinus \textit{et al.} [5], people recommender algorithms are especially effective because they use existing relationships to predict which people and opinions users are most likely to interact with. These algorithms typically rely on existing network structures (such as connecting friends of friends) or content consumption similarities (e.g., browsing interests and online activity preferences) to expose users to new communities and information. Cinus \textit{et al.}'s research demonstrates that these algorithms naturally emphasize homophilic relationships (similar age, interests, backgrounds, etc.) rather than heterophilic ones, thus isolating users from diverse opinions and sources of information. We argue that this ideological isolation, combined with the reinforcement of existing interaction patterns, actively creates substantial echo chambers beyond the capabilities of offline human behavior. 
+
+Of course, we acknowledge the significant role of human behavior when interacting with these algorithms. Zimmer \textit{et al.}'s research on the effect of echo chambers and filter bubbles [1] concludes that, while social media algorithms may contribute to the formation of echo chambers, they primarily amplify users' existing behavior and relationships. In other words, they argue that individual users' cognitive patterns, such as confirmation bias, selective exposure, in-group preferences, and memory, are key influencers in the development of echo chambers [1]. Indeed, in their article on dual echo chambers, Donkers and Ziegler [4] also introduce a new framework that suggests ideological echo chambers are driven primarily by user behavior, as members in these groups autonomously work to "discredit outside sources to maintain [their own] coherent world views." Members of ideological echo chambers "systematically exclude counter-attitudinal information" through deliberate action, as their limited engagement with dissenting opinions motivates them to "actively discredit outside voices" [4]. These echo chambers are usually formed when "ideological preemptive distrust," or preexisting bias against dissenting opinions, appears prior to the introduction of the echo chamber [4]. 
+
+Epistemic echo chambers, on the other hand, result from unintentional information gaps in preexisting relationship structures. Donkers and Ziegler [4] suggest that epistemic echo chambers result from an algorithmic lack of intra-network connectivity, as opposed to the user-led omission of outside information. They recognize, however, that the causal relationship between algorithms and human behavior (i.e., whether algorithmic echo chambers polarize existing views or vice versa) remains relatively opaque. To better understand this relationship, we look toward the algorithmic research presented by Cinus \textit{et al.} in [5]. 
+
+
+\section{The PROD Algorithm: Algorithmic Assessments on the Effects of People Recommenders}
+\noindent 
+\textbf{The Algorithm}
+\indent 
+
+In their study of the effect of people recommenders on echo chambers, Cinus \textit{et al.} [5] introduce the PROD (\textbf{P}eople \textbf{R}ecommenders on \textbf{O}pinion \textbf{D}ynamics) simulation algorithm to assess how recommendation algorithms influence the way people update their opinions. PROD takes a graph of opinions before interaction with an input people recommender (or any algorithm), then returns an altered graph with simulated opinions after interaction with the given algorithm. After running PROD with and without the people recommender on the same initial graph of opinions, Cinus \textit{et al.} were able to quantify the effect of people recommenders by calculating the average difference between the nodes on the algorithm-affected output graph and the no-algorithm output graph. 
+
+
+%Existing literature (cite Becky's paper?) mainly examined four recommenders' effects on echo chambers and polarization, which the effects will be explained in more detail in the Findings subsection. The three algorithms -- Directed Jaccard index (DJI), Personalized PageRank (PPR), and SALSA -- solely rely on network structure and the Opinion-biased algorithm (OBA) which relies on users' opinions as behavioral information input. This paper will not explain in great detail how each algorithm decides what to recommend to the user, but (cite Becky's paper) provides more in-depth information for further reading. 
+
+\vspace{5mm} %5mm vertical space
+\noindent Here is the pseudocode for the PROD algorithm: 
+
+%\begin{wrapfigure}{l}{1.2\textwidth}
+    \includegraphics{PROD}
+%\end{wrapfigure}
+
+% - more explanation on PROD https://ojs.aaai.org/index.php/ICWSM/article/view/19275/19047 
+
+\indent 
+
+In more detail, the PROD algorithm takes as inputs a directed graph of opinions that includes initial community modularity (i.e., the level of segregation between different communities) and homophily (i.e., how close an opinion node is to other opinions in the local community); a people recommender algorithm at test; and an opinion dynamic model (ODM) which specifies update rules to simulate how people might change their minds through interaction. At each step, each node interacts with other nodes according to the update rules of the ODM and the recommendations of the people recommender algorithm. Interactions are represented either through newly created links (lines 10-19 in the pseudocode) or through pre-existing links (lines 20-23). When interacting through newly created links, the ODM and the recommender work jointly to recommend a new node and apply opinion updates; when interacting through preexisting links, only ODM updates opinions as the two nodes have already been recommended to each other. When $R_{max}$ (a given number of total recommendations) is reached, the recommender stops and lets the ODM finalize the opinion changes. 
+
+% - evaluation method section from Becky's paper to lead to findings
+
+\vspace{5mm} %5mm vertical space
+
+\noindent 
+\textbf{Findings}
+
+In general, Cinus \textit{et al.} [5] found that people recommender algorithms had the strongest effect on opinion communities which were fairly homophilic but not already polarized (modular). The input and output opinion graphs, run through PROD with three types of people recommenders, are shown below:  
+
+
+\vspace{10mm} %10mm vertical space
+
+  \includegraphics[width=1\textwidth]{images/procedure.jpg}
+
+  \vspace{5mm} %5mm vertical space
+
+%Notation wise, NCI (Neighbor Correlation Index) quantifies the echo chamber effect and RWC (Random Walk Controversy Score) measures the polarization of the network. For further details of these two metrics used to quantify effects, please refer to Cinus \textit{et al.}. The colors of the nodes represent their opinions. Initial graph (a) has high homophily low modularity starting condition, and initial graph (b) has high homophily but also high modularity starting condition. This graph demonstrates how different modularity influences the effect of people recommenders on echo chambers and polarization. The differences due to high and low homophily was not included in this graph, but will also be elaborated on in the following paragraphs. -- not relevant anymore because the graph is too detailed and does not include all cases. I removed the graph as well
+
+The two rows of this figure demonstrate how different levels of segregation can influence the effect of people recommenders on echo chambers and polarization. Initial graph (a) has a less segregated starting condition, and initial graph (b) has a high level of initial segregation. The colors of the nodes represent their opinions. We can see how the opinion graphs in the non-segregated condition change (segregate) drastically after running them through three different recommenders, while the segregated condition remains mostly the same. (For further details on the results of the PROD simulation, please refer to [5].) 
+
+In particular, strong algorithmic effects appear when (i) homophilic links (links connecting nodes with the same opinions) make up at least half of the initial input network, and (ii) the initial network  "is  not  already segregated in polarized communities, but there are a large fraction of inter-community links" (i.e., high homophily and low modularity) [5]. These conditions correspond somewhat with Donkers and Ziegler's [4] definition of epistemic echo chambers, which arise from preexisting community homophily but a lack of systematic segregation or modularity. Cinus \textit{et al.}'s [5] research suggests that for this type of network, the effect of people recommenders almost always increases the segregation of echo chambers.  Thus, epistemic echo chambers may become even more polarized and segregated with the influence of people recommenders, and could even evolve into the more entrenched ideological echo chambers.
+
+For ideological echo chambers, or graphs that are already highly modularized, the effects of people recommender algorithms are negligible. (The same small effect occurs when communities are not highly homophilic.) In fact, when communities are more modularized than even the suggestions of the recommender algorithms, these algorithms often encourage communities to intermix. In other words, if the network is not very segregated initially, recommenders increase homophily, modularity, and therefore the effect of echo chambers; but if the network is already very divided into communities, some recommenders might have the opposite effect and “shuffle together” different communities. 
+
+% ---------------------------
+
+
+\section{Mitigating the Effects of Algorithms on Echo Chambers}
+\indent 
+
+Cinus \textit{et al.}'s research [5] shows that while people recommenders do often exacerbate the harmful effects of echo chambers, they can also mitigate extreme echo chambers by artificially intermixing communities. To be more precise, Cinus \textit{et al.} infer from their PROD testing (shown above) that the theoretically most effective intervention strategy is algorithmic opinion diversification. This approach connects individuals from different echo chamber communities by replacing people recommenders with different algorithms that showcase opposing opinions according to a certain probability. 
+
+Similarly, Donkers and Ziegler [4] propose several mitigation strategies that promote algorithmic opinion diversification,  namely Boundary, Boundary- Translation, and Community Intersection. The "Boundary" intervention tactic seeks to mitigate the effects of echo chambers by using community voices. After identifying the "boundary users" with significant connections both inside and outside of the echo chamber, this intervention tactic aims to mitigate through these users so that the overall beliefs of the echo chamber are less likely to polarize. Likewise, the Boundary-Translation tactic uses algorithms to amplify the voices of certain boundary users within the community. In order to prevent "backfire-effects" from promoting all boundary users, this strategy selects only those who are expected to have a "positive impact" on the community [4]. Both Boundary and Boundary-Translation are expected to increase the degree of interaction with less polarized content, but from within the established community rather than an undesirable outside approach). Community intersection, on the other hand, seeks to bridge opposites to depolarize the entire space. This approach looks for users in opposite spaces that share interests or opinions, then unites them through these interests in order to increase the level of outside interactions. 
+
+In [4], Donkers and Ziegler use Twitter data to test the efficacy of all three mitigation strategies. Specifically, they introduce the agent-based modeling algorithm, which models the relationship between the user and the system through the implementation of these strategies. In these situations, the user's system and Twitter's system for recommendations often have reciprocal influences on each other. Using this model, we can properly calculate meaningful diversification of recommendations. 
+
+\vspace{5mm} %5mm vertical space
+\begin{center}
+\noindent\includegraphics[width=1\textwidth]{img1}
+\end{center}
+
+
+\indent  The above algorithm outlines the training process for a knowledge graph embedding model that can be modified through interventions. The algorithm takes an input of a Twitter dataset then sorts the data into a fixed number of temporal bins. These temporal bins are akin to graphs, where data can be sorted and processed based on their preexisting similarities. From there, the algorithm takes incremented steps to find the union of edges in this graph space. That data is used to train the model, and the resulting simulated edges will be added to the training data. In the process of training, interventions are being executed. As discussed above, these interventions are simulations of more diverse systems of algorithmic recommendations. Thus, as the model continues to get trained, it will be increasingly influenced by the applied interventions. The model's end goal is to create a realistic model of what community spaces on Twitter can look like with different attempted interventions (or no interventions at all).
+
+Donkers and Ziegler [4] also found that in general, ideological echo chambers were difficult to reverse with outside interaction, but epistemic echo chambers were more receptive to mitigation strategies. The Community intersection method in particular was highly effective in creating intra-community discourse, but unsuccessful in promoting outside acceptance from ideological echo chambers. The Boundary and Boundary-T
+Translation strategies, however, yielded more significant results for ideological and highly polarized communities. Donkers and Zielger [4] observed a notable improvement in modularity within the first few (inside) interventions, and the selection of "positive" boundary users with preferential dispositions proved even more effective. Their findings, along with Cinus \textit{et al.}'s [5] research, suggest that a multitude of different strategies is needed to mitigate the polarizing effects of people recommendation algorithms, as echo chambers respond differently to these strategies based on their levels of homophily and modularity. We suspect that the algorithmic implementation of these different strategies, as well as the relationship shift between users and social media, will present significant challenges as initiatives to mitigate the effect of echo chambers move forward. 
+
+
+  \section{Conclusion}
+
+\indent  
+
+While Zimmer \textit{et al.} [1] raise important questions about the role of algorithms versus human behavior, research by [4] and [5] demonstrates that algorithms have a significant effect on polarization and echo chamber creation beyond human behavior, particularly when the existing networks are epistemic instead of ideological. The effect of people recommender algorithms on echo-chamber creation is most noticeable with initial conditions of high homophilia but low segregation, making algorithmic prevention crucial to prevent further segregation of these communities. 
+
+In addition to preventing new echo chambers from forming, social media algorithms must also address existing echo chambers. Our review of the existing literature suggests that epistemic echo chambers (i.e., those with lower levels of modularity) are easier to "de-polarize,"  and strategies like the Community Intersection strategy have proved effective [4], [5]. 
+Ideological echo chambers are harder to depolarize, and algorithmic intervention for highly segregated communities has not proved as effective. Insider mitigation strategies such as Boundary and Boundary-Translation, however, have shown initial signs of success [4]. While implementing a multifaceted approach may be challenging for social media algorithms, we believe diversity in strategy is necessary to mitigate the harmful effects of echo chambers.
+
+While there is still much research to be done before social media companies can effectively implement these strategies, they must acknowledge the danger of people recommender algorithms now. We believe these companies need to shift away from algorithms that encourage echo chambers, and encourage users to embrace a more varied, educated, and democratic future. As we have seen from [4] and [5], echo chambers can have a polarizing and even radicalizing effect on users, which likely leads to more division and hostility in society. The potential negative effects on user retention and company profit are important to consider, but they should not take priority over the well-being of online society. Until social media platforms have implemented more conscious algorithms, users must hold them accountable to higher standards. By encouraging these platforms to create a more diverse and open social media experience, we can strive for a healthier and more cohesive society. 
+
+
+  
+
+  \begin{thebibliography}{widest entry}
+     \bibitem{cite_key1} Zimmer, Franziska & Scheibe, Katrin & Stock, Wolfgang, "Echo Chambers and Filter Bubbles of Fake News in Social Media. Man-made or produced by algorithms?", in \textit{Proc. 2019 Hawaii University International Conferences}, Honolulu, HI, USA, January 3-5, 2019. 
+
+     \bibitem{cite_key2}
+     Z. Tufekci. “How Recommendation Algorithms Run the World,” \textit{Wired Magazine}, April 22, 2019. [Online.] Available: https://www.wired.com/story/how-recommendation-algorithms-run-the-world/. [Accessed May 2, 2023.]
+
+     \bibitem{cite_key3}
+     S. Das. “How TikTok bombards young men with misogynistic videos.” \textit{The Guardian}, 
+     August 6, 2022. [Online.] Available: https://www.theguardian.com/technology/2022/aug/06/revealed-how-tiktok-bombards-young-men-with-misogynistic-videos-andrew-tate. [Accessed May 2, 2023.]
+
+     \bibitem{cite_key4}
+    Donkers, Ziegler, "The Dual Echo Chamber: Modeling Social Media Polarization for Interventional Recommending," in \textit{Proc. 15th ACM Conference on Recommender Systems}, Amsterdam, Netherlands, September 27-October 1, 2021, pp. 12-22, doi: 10.1145/3460231.3474261. 
+     
+     \bibitem{cite_key5} F. Cinus, M. Minici, C. Monti, and F. Bonchi, “The Effect of People Recommenders on Echo Chambers and Polarization”, ICWSM, vol. 16, no. 1, pp. 90-101, May 2022.
+
+    
+
+     
+    \end{thebibliography}
+
+\end{document} 
